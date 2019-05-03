@@ -1,0 +1,26 @@
+{
+  "name": "LIRI",
+  "version": "1.0.0",
+  "description": "",
+  "main": "liri.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/birbjam/LIRI.git"
+  },
+  "keywords": [],
+  "author": "Diana Lovette",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/birbjam/LIRI/issues"
+  },
+  "homepage": "https://github.com/birbjam/LIRI#readme",
+  "dependencies": {
+    "axios": "^0.18.0",
+    "dotenv": "^8.0.0",
+    "moment": "^2.24.0",
+    "node-spotify-api": "^1.1.1"
+  }
+}
