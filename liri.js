@@ -7,18 +7,19 @@ var moment = require("moment");
 var fs = require("fs");
 
 
-/*Make it so liri.js can take in one of the following commands:
 
-   * `concert-this`
-
-   * `spotify-this-song`
-
-   * `movie-this`
-
-   * `do-what-it-says`
-   */
-
-//USE SWITCH ^
+switch (command) {
+    case 'concert-this':
+    break;
+    case 'spotify-this-song':
+    break;
+    case 'movie-this':
+    break;
+    case 'do-what-it-says':
+    break;
+    default:
+        console.log('Not a recognized command')
+}
 
 //LOOP THRU THE RESULTS OF THE RESULTS
 
