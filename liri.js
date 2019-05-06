@@ -2,9 +2,8 @@ require("dotenv").config();
 var keys = require("./keys.js");
 var Spotify = require("node-spotify-api");
 var spotify = new Spotify(keys.spotify);
-var OMDB = require("omdb");
-//var omdb = new OMDB(keys.omdb);
-var bandsInTown = keys.bandsInTown;
+//var omdbKey = (keys.omdb);
+var bandsInTown = (keys.bandsInTown);
 var axios = require("axios");
 var moment = require("moment");
 var fs = require("fs");
@@ -61,7 +60,8 @@ function spotifyThisSong () {
         let spotifyArray = data.tracks.items;
 
         for (i = 0; i < spotifyArray.length; i++) {
-            console.log(`\n RESULTS:\n\n
+            console.log(`\n-----------
+            \nRESULTS:\n\n
             Artist: ${data.tracks.items[i].album.artists[0].name}\n
             Song: ${data.tracks.items[i].name}\n
             Albums: ${data.tracks.items[i].album.name}\n\n------------
@@ -74,27 +74,19 @@ function spotifyThisSong () {
 }
 
 function movieThis() {
-    //axios.get(`http://www.omdbapi.com/?apikey=${omdbKey}&t=${userTerm}`)
-    //.then(function (response) {
-        //console.log(`
-        //Movie Name: ${response.data.name}
-        //The movie's rating is: ${response.data.imdbRating}
-        //`)
-    //})
+    let URL = `http://www.omdbapi.com/?apikey=trilogy&t=${userTerm}`;
 
-    omdb.search(userTerm, function(err, movies) {
-        if (err) {
-            return console.error(err);
-        }
-
-        if (movies.length < 1) {
-            return console.log('No movies were found!');
-        }
-
-        movies.forEach(function(movie) {
-            console.log('%s (%d)', movie.title, movie.year);
-        });
-    });
+    axios.get(URL)
+        .then(function (response) {
+            var jsonData = response.data;
+        console.log(`\n~~~~~~~~~~\n
+        Movie Name: ${jsonData.Title}
+        Rating: ${jsonData.imdbRating}
+        Year: ${jsonData.Year}
+        Genre: ${jsonData.Genre}
+        Summary: ${jsonData.Plot}
+        \n~~~~~~~~~~`);
+    })
 
 }
 

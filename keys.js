@@ -8,5 +8,5 @@ exports.bandsInTown = {
 };
 
 exports.omdb = {
-  id: process.env.OMDB_KEY
+  apikey: process.env.apikey
 };
