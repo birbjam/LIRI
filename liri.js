@@ -2,12 +2,14 @@ require("dotenv").config();
 var keys = require("./keys.js");
 var Spotify = require("node-spotify-api");
 var spotify = new Spotify(keys.spotify);
+var bandsintown = new bandsInTown(keys.bandsInTown);
+var omdb = new omdb(keys.omdb);
 var axios = require("axios");
 var moment = require("moment");
 var fs = require("fs");
 
 let userInput = process.argv[2];
-let userTerm = process.argv.slice[3].join(" ");
+let userTerm = process.argv.slice(3).join(" ");
 
 function userCommand(userInput, userTerm) {
 switch (command) {
@@ -33,11 +35,33 @@ userCommand(userInput, userTerm);
 
 //LOOP THRU THE RESULTS OF THE RESULTS
 
-spotify.search({
-    type: 'track', query: "All The Small Things" }, function(err, data) {
+function concertThis() {
+    var URL = `https://rest.bandsintown.com/artists/${userTerm}/events?app_id=${bandsintown}`;
+    
+}
+
+function spoitifyThisSong () {
+    spotify.search(
+      {
+        type: "track",
+        query: userTerm
+      },
+      function(err, data) {
         if (err) {
-            return console.log("error occured: " + err);
+          return console.log("error occured: " + err);
         }
         console.log(data);
-    }
-);
+      }
+    );
+
+}
+
+function movieThis() {
+    var URL = `http://www.omdbapi.com/?apikey=${omdb}&t=${userTerm}`;
+
+}
+
+function doThis() {
+
+}
+
