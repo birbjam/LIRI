@@ -2,8 +2,8 @@ require("dotenv").config();
 var keys = require("./keys.js");
 var Spotify = require("node-spotify-api");
 var spotify = new Spotify(keys.spotify);
-var bandsintown = new bandsInTown(keys.bandsInTown);
-var omdb = new omdb(keys.omdb);
+var bandsInTown = keys.bandsInTown;
+var omdb = keys.omdb;
 var axios = require("axios");
 var moment = require("moment");
 var fs = require("fs");
@@ -12,12 +12,12 @@ let userInput = process.argv[2];
 let userTerm = process.argv.slice(3).join(" ");
 
 function userCommand(userInput, userTerm) {
-switch (command) {
+switch (userInput) {
     case 'concert-this':
         concertThis();
         break;
     case 'spotify-this-song':
-        spoitifyThisSong();
+        spotifyThisSong();
         break;
     case 'movie-this':
         movieThis();
@@ -36,11 +36,11 @@ userCommand(userInput, userTerm);
 //LOOP THRU THE RESULTS OF THE RESULTS
 
 function concertThis() {
-    var URL = `https://rest.bandsintown.com/artists/${userTerm}/events?app_id=${bandsintown}`;
+    var URL = `https://rest.bandsintown.com/artists/${userTerm}/events?app_id=${bandsInTown}`;
     
 }
 
-function spoitifyThisSong () {
+function spotifyThisSong () {
     spotify.search(
       {
         type: "track",
