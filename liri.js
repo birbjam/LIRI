@@ -119,10 +119,14 @@ function movieThis() {
         .then(function (response) {
             var jsonData = response.data;
         console.log(`\n~~~~~~~~~~\n
-        Movie Name: ${jsonData.Title}
-        Rating: ${jsonData.imdbRating}
+        Movie Title: ${jsonData.Title}
         Year: ${jsonData.Year}
+        IMDB Rating: ${jsonData.imdbRating}
+        Rotten Tomatoes Rating: ${jsonData.Ratings[1].Value}
+        Country: ${jsonData.Country}
+        Language: ${jsonData.Language}
         Genre: ${jsonData.Genre}
+        Cast: ${jsonData.Actors}
         Summary: ${jsonData.Plot}
         \n~~~~~~~~~~`);
     })
