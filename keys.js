@@ -3,10 +3,3 @@ exports.spotify = {
   secret: process.env.SPOTIFY_SECRET
 };
 
-exports.bandsInTown = {
-  id: process.env.app_id
-};
-
-exports.omdb = {
-  apikey: process.env.apikey
-};

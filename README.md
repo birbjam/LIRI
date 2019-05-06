@@ -5,6 +5,9 @@
 # Built With
 - node.js
 - JavaScript
+- Spotify API
+- OMDB API
+- Bands In Town API
 
 # License
 - GNU GENERAL PUBLIC LICENSE

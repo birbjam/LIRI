@@ -2,11 +2,10 @@ require("dotenv").config();
 var keys = require("./keys.js");
 var Spotify = require("node-spotify-api");
 var spotify = new Spotify(keys.spotify);
-//var omdbKey = (keys.omdb);
-var bandsInTown = (keys.bandsInTown);
 var axios = require("axios");
 var moment = require("moment");
 var fs = require("fs");
+var request = require("request");
 
 let userInput = process.argv[2];
 let userTerm = process.argv.slice(3).join(" ");
@@ -26,17 +25,54 @@ switch (userInput) {
         doThis(userTerm);
         break;
     default:
-        console.log('Not a recognized command');
+        console.log(`\n~~~~~~~~~~
+        Not a recognized command.
+        Type any of the following using the format "node liri <command>":
+        concert-this <artist or band>
+        spotify-this-song <song and artist or just song>
+        movie-this <movie name>
+        do-what-it-says <command>
+        
+        Example command: node liri movie-this arrival
+        \n~~~~~~~~~~`);
         break;
 }
 }
 
 userCommand(userInput, userTerm);
 
-//LOOP THRU THE RESULTS OF THE RESULTS
 
 function concertThis() {
-    var URL = `https://rest.bandsintown.com/artists/${userTerm}/events?app_id=${bandsInTown}`;
+    var URL = `https://rest.bandsintown.com/artists/${userTerm}/events?app_id=codingbootcamp`;
+
+    if (!userTerm) {
+        userTerm = "jungle"
+    };
+
+    console.log(`SEARCHING FOR ${userTerm}`);
+
+    request(URL, function(err, response, body) {
+
+        if (!err && response.statusCode === 200) {
+        let artist = JSON.parse(body);
+
+        if (artist.length > 0) {
+            for (i = 0; i < 1; i++) {
+                
+                console.log(`\n~~~~~~~~~~\n
+                    Venue Name: ${artist[i].venue.name}
+                    Country: ${artist[i].venue.country}
+                    City: ${artist[i].venue.city}
+                    Date: ${artist[i].datetime}
+                    Lineup: ${artist[i].lineup[0]}
+                    \n~~~~~~~~~~`);
+            };
+        } else {
+            console.log(`${userTerm} not found!`);
+        };
+
+    }
+    });
     
 }
 
@@ -60,11 +96,11 @@ function spotifyThisSong () {
         let spotifyArray = data.tracks.items;
 
         for (i = 0; i < spotifyArray.length; i++) {
-            console.log(`\n-----------
-            \nRESULTS:\n\n
-            Artist: ${data.tracks.items[i].album.artists[0].name}\n
-            Song: ${data.tracks.items[i].name}\n
-            Albums: ${data.tracks.items[i].album.name}\n\n------------
+            console.log(`\n~~~~~~~~~~\n
+            Artist: ${data.tracks.items[i].album.artists[0].name}
+            Song: ${data.tracks.items[i].name}
+            Album: ${data.tracks.items[i].album.name}
+            \n~~~~~~~~~~\n
             `)
         }
         //console.log(data);
