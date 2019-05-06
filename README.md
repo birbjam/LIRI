@@ -11,6 +11,8 @@
 
 3. The `concert-this` command takes in a band name and returns data from Bands in Town about the next concert by that artist, including the artist name, venue name, country and city the venue is located in, as well as the date and time of the concert. If no artist is specified, the command will automatically run the upcoming concert for Jungle.
 
+![LIRI-concert](https://i.makeagif.com/media/5-06-2019/KOytJ8.gif)
+
 4. The `do-this` command is run by itself. It uses the text in the `random.txt` file as a command to return data for whatever the text says. In this case the contents of the `random.txt` file will be `spotify-this-song,"I Want It That Way"`.
 
 ## Video Demo
