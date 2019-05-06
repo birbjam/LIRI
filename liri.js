@@ -21,7 +21,7 @@ switch (userInput) {
     case 'movie-this':
         movieThis();
         break;
-    case 'do-what-it-says':
+    case 'do-this':
         doThis(userTerm);
         break;
     default:
@@ -113,12 +113,15 @@ function spotifyThisSong () {
 }
 
 function movieThis() {
-    let URL = `http://www.omdbapi.com/?apikey=trilogy&t=${userTerm}`;
+  let URL = `http://www.omdbapi.com/?apikey=trilogy&t=${userTerm}`;
 
-    axios.get(URL)
-        .then(function (response) {
-            var jsonData = response.data;
-        console.log(`\n~~~~~~~~~~\n
+  if (!userTerm) {
+    userTerm = "arrival";
+  }
+
+  axios.get(URL).then(function(response) {
+    var jsonData = response.data;
+    console.log(`\n~~~~~~~~~~\n
         Movie Title: ${jsonData.Title}
         Year: ${jsonData.Year}
         IMDB Rating: ${jsonData.imdbRating}
@@ -129,11 +132,17 @@ function movieThis() {
         Cast: ${jsonData.Actors}
         Summary: ${jsonData.Plot}
         \n~~~~~~~~~~`);
-    })
-
+  });
 }
 
 function doThis() {
+    fs.readFile('random.txt', 'utf8', function (err, data) {
+        if (err) {
+            return console.log(err) };
+        let contentsArray = data.split(",");
 
+        userInput = contentsArray[0];
+        userTerm = contentsArray[1];
+        userCommand(userInput, userTerm);
+    });
 }
-
