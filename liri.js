@@ -6,20 +6,30 @@ var axios = require("axios");
 var moment = require("moment");
 var fs = require("fs");
 
+let userInput = process.argv[2];
+let userTerm = process.argv.slice[3].join(" ");
 
-
+function userCommand(userInput, userTerm) {
 switch (command) {
     case 'concert-this':
-    break;
+        concertThis();
+        break;
     case 'spotify-this-song':
-    break;
+        spoitifyThisSong();
+        break;
     case 'movie-this':
-    break;
+        movieThis();
+        break;
     case 'do-what-it-says':
-    break;
+        doThis(userTerm);
+        break;
     default:
-        console.log('Not a recognized command')
+        console.log('Not a recognized command');
+        break;
 }
+}
+
+userCommand(userInput, userTerm);
 
 //LOOP THRU THE RESULTS OF THE RESULTS
 

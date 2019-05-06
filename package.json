@@ -1,5 +1,5 @@
 {
-  "name": "LIRI",
+  "name": "LIRI-CLI-app",
   "version": "1.0.0",
   "description": "",
   "main": "liri.js",
@@ -14,9 +14,9 @@
   "author": "Diana Lovette",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/birbjam/LIRI/issues"
+    "url": "https://github.com/birbjam/LIRI-CLI-app/issues"
   },
-  "homepage": "https://github.com/birbjam/LIRI#readme",
+  "homepage": "https://github.com/birbjam/LIRI-CLI-app#readme",
   "dependencies": {
     "axios": "^0.18.0",
     "dotenv": "^8.0.0",
