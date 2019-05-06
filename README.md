@@ -14,7 +14,7 @@
 4. The `do-this` command is run by itself. It uses the text in the `random.txt` file as a command to return data for whatever the text says. In this case the contents of the `random.txt` file will be `spotify-this-song,"I Want It That Way"`.
 
 ## Video Demo
-* [LIRI Video Demo](https://drive.google.com/file/d/1-PPFYLio3MNlj8gOBeAZavzyDF7D_8RO/view?usp=sharing)
+![LIRI Video Demo](https://drive.google.com/file/d/1-PPFYLio3MNlj8gOBeAZavzyDF7D_8RO/view?usp=sharing)
 
 ## Built With
 - node.js
