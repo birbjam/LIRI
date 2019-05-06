@@ -31,9 +31,9 @@ switch (userInput) {
         concert-this <artist or band>
         spotify-this-song <song and artist or just song>
         movie-this <movie name>
-        do-what-it-says <command>
+        do-this <command>
         
-        Example command: node liri movie-this arrival
+        Example command: node liri movie-this inception
         \n~~~~~~~~~~`);
         break;
 }
