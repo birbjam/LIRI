@@ -49,7 +49,7 @@ function concertThis() {
         userTerm = "jungle"
     };
 
-    console.log(`SEARCHING FOR ${userTerm}`);
+    console.log(`Searching for: ${userTerm}'s next concert!`);
 
     request(URL, function(err, response, body) {
 
@@ -58,13 +58,16 @@ function concertThis() {
 
         if (artist.length > 0) {
             for (i = 0; i < 1; i++) {
+
+                let dateAndTime = moment(artist[i].datetime).format("MM/DD/YYYY hh:00 A");
                 
-                console.log(`\n~~~~~~~~~~\n
+                console.log(`
+                    \n~~~~~~~~~~\n
+                    Artist: ${artist[i].lineup[0]}
                     Venue Name: ${artist[i].venue.name}
                     Country: ${artist[i].venue.country}
                     City: ${artist[i].venue.city}
-                    Date: ${artist[i].datetime}
-                    Lineup: ${artist[i].lineup[0]}
+                    Date and Time: ${dateAndTime}
                     \n~~~~~~~~~~`);
             };
         } else {
@@ -100,10 +103,10 @@ function spotifyThisSong () {
             Artist: ${data.tracks.items[i].album.artists[0].name}
             Song: ${data.tracks.items[i].name}
             Album: ${data.tracks.items[i].album.name}
+            Song Preview: ${data.tracks.items[i].external_urls.spotify}
             \n~~~~~~~~~~\n
             `)
         }
-        //console.log(data);
       }
     );
 
