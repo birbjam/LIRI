@@ -1,14 +1,14 @@
 require("dotenv").config();
 // Importing keys from keys.js file.
 var keys = require("./keys.js");
-// Creating a new spotify class using the keys and storing it in a variable.
-var spotify = new Spotify(keys.spotify);
 // Requiring the npm spotify packages.
 var Spotify = require("node-spotify-api");
 var axios = require("axios");
 var moment = require("moment");
 var fs = require("fs");
 var request = require("request");
+// Creating a new spotify class using the keys and storing it in a variable.
+var spotify = new Spotify(keys.spotify);
 
 // Storing user input command in a variable.
 let userInput = process.argv[2];
